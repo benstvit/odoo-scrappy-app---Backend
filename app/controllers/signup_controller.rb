@@ -20,6 +20,6 @@ class SignupController < ApplicationController
   private
 
   def user_params
-    ActionController::Parameters.new(JSON.parse(params.require(:user))).permit(:email, :name, :password, :street, :zip)
+    params.permit(:email, :name, :password)
   end
 end

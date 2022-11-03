@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   require 'securerandom'
+  has_many :clients
 
   has_secure_password
 

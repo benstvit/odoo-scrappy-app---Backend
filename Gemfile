@@ -68,4 +68,5 @@ gem 'solargraph', group: :development
 gem 'rack-cors'
 gem 'xmlrpc', '0.2.1'
 
-gem 'jsonapi-serializer'
+gem 'fast_jsonapi'
+gem 'active_model_serializers', '~> 0.10.0'

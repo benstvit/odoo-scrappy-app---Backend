@@ -12,12 +12,7 @@ module Api
 
       # GET /users
       def index
-        @clients = fetch_clients
-        render json: @clients
-      end
-
-      # POST /users
-      def create
+        ClientSerializer.new(fetch_clients)
       end
 
       private
@@ -25,12 +20,11 @@ module Api
       def uid
         common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/common")
         uid = common.call('authenticate', @db, @username, @password, {})
-        uid
       end
 
       def fetch_clients
         models = XMLRPC::Client.new2("#{@url}/xmlrpc/2/object").proxy
-        models.execute_kw(@db, uid, @password, 'res.partner', 'search_read', [[['is_company', '=', true]]], {fields: %w(name email street zip), limit: 5})
+        data = models.execute_kw(@db, uid, @password, 'res.partner', 'search_read', [[['is_company', '=', true]]], {fields: %w(name email street zip), limit: 5})
       end
 
     end

@@ -2,7 +2,6 @@ module Api
   module V1
     class UsersController < ApplicationController
       before_action :set_user, only: %i[show update destroy]
-      skip_before_action :authenticate_request, only: %i[create]
 
       # GET /users
       def index
@@ -47,7 +46,7 @@ module Api
       end
 
       def user_params
-        ActionController::Parameters.new(JSON.parse(params.require(:user))).permit(:email, :name, :password, :street, :zip)
+        params.permit(:email, :name, :password)
       end
     end
   end

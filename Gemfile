@@ -66,5 +66,6 @@ gem 'ruby-lint'
 gem 'solargraph', group: :development
 
 gem 'rack-cors'
-gem 'jwt_sessions', '~> 2.3'
 gem 'xmlrpc', '0.2.1'
+
+gem 'jsonapi-serializer'

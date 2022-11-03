@@ -3,12 +3,16 @@ module Api
     class ClientsController < ApplicationController
       require "xmlrpc/client"
 
-      # before_action :authorize_access_request!
+      def initialize
+        @url = 'https://chift.odoo.com'
+        @db = 'chift'
+        @username = "ben.saintviteux@gmail.com"
+        @password = 'quentben'
+      end
 
       # GET /users
       def index
         @clients = fetch_clients
-        current_user.clients = @clients
         render json: @clients
       end
 
@@ -18,14 +22,17 @@ module Api
 
       private
 
-      def fetch_clients
-        url = 'https://chift.odoo.com'
-        db = 'chift'
-        username = "ben.saintviteux@gmail.com"
-        password = 'quentben'
-        common = XMLRPC::Client.new2("#{url}/xmlrpc/2/common")
-        return common.call('version')
+      def uid
+        common = XMLRPC::Client.new2("#{@url}/xmlrpc/2/common")
+        uid = common.call('authenticate', @db, @username, @password, {})
+        uid
       end
+
+      def fetch_clients
+        models = XMLRPC::Client.new2("#{@url}/xmlrpc/2/object").proxy
+        models.execute_kw(@db, uid, @password, 'res.partner', 'search_read', [[['is_company', '=', true]]], {fields: %w(name email street zip), limit: 5})
+      end
+
     end
   end
 end

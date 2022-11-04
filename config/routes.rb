@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'signin/create'
   namespace :api do
     namespace :v1 do
-      resources :clients, only: %i[index]
+      resources :clients, only: [:index, :create, :destroy]
       resources :users
     end
   end

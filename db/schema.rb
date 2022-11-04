@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2022_11_03_083520) do
 
   create_table "clients", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "name", null: false
+    t.string "email"
+    t.string "name"
     t.string "street"
     t.string "zip"
     t.datetime "created_at", precision: 6, null: false

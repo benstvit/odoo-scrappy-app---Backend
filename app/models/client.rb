@@ -1,3 +1,4 @@
 class Client < ApplicationRecord
-  attr_accessor :name, :email, :street, :zip
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
 end

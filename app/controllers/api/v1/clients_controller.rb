@@ -39,7 +39,7 @@ module Api
 
       def fetch_clients
         models = XMLRPC::Client.new2("#{@url}/xmlrpc/2/object").proxy
-        data = models.execute_kw(@db, uid, @password, 'res.partner', 'search_read', [[['is_company', '=', true]]], {fields: %w(name email street zip), limit: 5})
+        data = models.execute_kw(@db, uid, @password, 'res.partner', 'search_read', [[['is_company', '=', true]]], {fields: %w(name email street zip)})
       end
 
       def uid

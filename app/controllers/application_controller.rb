@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
     test = render json: {
       data: options["data"],
       success: options["data"].present?,
-      message: ''
+      message: 'Data retrieved'
     }
   end
 

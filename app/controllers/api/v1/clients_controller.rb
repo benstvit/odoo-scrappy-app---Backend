@@ -50,7 +50,6 @@ module Api
       def client_params
         params.permit(:id, :name, :email, :street, :zip)
       end
-
     end
   end
 end

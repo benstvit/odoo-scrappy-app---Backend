@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'api/v1/clients#index'
+  get '/', to: redirect('api/v1/clients#index')
 end

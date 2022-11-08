@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       resources :users
     end
   end
+
+  root :to => "api/v1/clients#index"
 end

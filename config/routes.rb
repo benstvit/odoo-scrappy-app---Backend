@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :clients, only: [:index, :create, :destroy]
-      resources :users
     end
   end
 
-  root :to => "api/v1/clients#index"
+  get '/', to: redirect('/api/v1/clients')
 end

@@ -1,3 +1,3 @@
 # root/Procfile
-web: bundle exec rails server -p $PORT
-release: bundle exec rails db:migrate
+web: bundle exec rails server -p 3000
+grelease: bundle exec rails db:migrate

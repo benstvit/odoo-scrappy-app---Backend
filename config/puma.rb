@@ -21,8 +21,7 @@ worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
 preload_app!
 
 rackup      DefaultRackup if defined?(DefaultRackup)
-port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'development'
+port        ENV.fetch("PORT") { 3000 }
 
 # port ENV.fetch('PORT', 3000)
 
